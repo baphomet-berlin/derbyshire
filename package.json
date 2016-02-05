@@ -7,30 +7,24 @@
     "type": "git",
     "url": "git+https://github.com/baphomet-berlin/derbyshire.git"
   },
+  "scripts": {
+    "start": "http-server",
+    "watch": "watchify ./src/Derbyshire.es6 -t [ babelify ] -o build/Derbyshire.js",
+    "test": "babel-tape-runner test/main.es6 | faucet"
+  },
   "author": "Claudio Brandolino <cbrandolino@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/baphomet-berlin/derbyshire/issues"
   },
   "devDependencies": {
-    "babel-eslint": "^4.1.8",
-    "babel-preset-es2015": "^6.3.13",
+    "babel-cli": "^6.4.5",
+    "babel-tape-runner": "^2.0.0",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
-    "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^5.0.0",
-    "eslint-plugin-react": "^3.16.1",
-    "gulp": "^3.9.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-tape": "0.0.7",
-    "http-server": "^0.8.5",
-    "merge-stream": "^1.0.0",
-    "tap-colorize": "^1.2.0",
+    "faucet": "0.0.1",
+    "phantomjs": "^2.1.3",
     "tape": "^4.4.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.3.14"
+    "watchify": "^3.7.0"
   }
 }
