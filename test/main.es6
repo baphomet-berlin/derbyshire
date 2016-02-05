@@ -1,9 +1,8 @@
 import test from 'tape';
-import Derbishire from '../build/main.js';
 
-console.log(Derbishire);
+console.log(Derbyshire);
 
-test('timing test', (t) => {
+test('Object creation', (t) => {
   t.plan(2);
   t.fail('u faild lol');
 });

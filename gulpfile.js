@@ -6,7 +6,7 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var tape = require('gulp-tape');
 var colorizer = require('tap-colorize');
-var merge = require('merge-stream');
+var concat = require('gulp-concat');
 
 var bundles = {
   main: 'src/',
@@ -28,7 +28,8 @@ function build(id) {
 gulp.task('build', function() { build('main'); });
 gulp.task('build-test', function() { build('test'); });
 gulp.task('test', function() {
-  gulp.src('./build/test.js')
+    gulp.src('../build/main.js')
+    .pipe(concat('./test.js'))
     .pipe(tape({ reporter: colorizer() }));
 });
 
