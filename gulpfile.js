@@ -6,19 +6,23 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var babelify = require('babelify');
 
-function compile(watch) {
+function compile(entry, watch) {
+  var entry = entry || 'main';
   var bundler = watchify(
-    browserify(
-      { debug: true, extensions: ['.es6'], entries: ['src/main.es6'] }
-    ).transform(
-      babelify.configure({ extensions: ['.es6'], presets: ["es2015"] })
-    )
+    browserify({ 
+      debug: true, 
+      extensions: ['.es6'], 
+      entries: ['src/' + entry + '.es6'] }
+    ).transform(babelify.configure({ 
+      extensions: ['.es6'], 
+      presets: ["es2015"] 
+    }))
   );
 
   function rebundle() {
     bundler.bundle()
       .on('error', function(err) { console.error(err); this.emit('end'); })
-      .pipe(source('build.js'))
+      .pipe(source(entry + '.js'))
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
@@ -36,10 +40,9 @@ function compile(watch) {
 }
 
 function watch() {
-  return compile(true);
+  return compile('main', true);
 };
 
 gulp.task('build', function() { return compile(); });
 gulp.task('watch', function() { return watch(); });
-
 gulp.task('default', ['watch']);
