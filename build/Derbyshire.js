@@ -14,5 +14,3 @@ var Derbyshire = function Derbyshire() {
 exports.default = Derbyshire;
 
 },{}]},{},[1]);
-
-//# sourceMappingURL=main.js.map
