@@ -1,6 +1,6 @@
+import 'babel-polyfill';
 
 function test() {
-
 
 }
 
