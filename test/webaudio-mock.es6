@@ -152,6 +152,7 @@ class AudioContext {
 
 if (/PhantomJS/.test(window.navigator.userAgent)) {
   window.AudioContext = AudioContext;
+  window.GainNode = GainNode;
 }
 
 export default AudioContext;

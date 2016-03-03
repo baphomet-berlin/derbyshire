@@ -3,8 +3,8 @@ class DerbyshireSourcesArray extends Array {
     super();
   }
 
-  push(source) {
-    super(source);
+  push(type) {
+    super.push(type);
   }
 }
 

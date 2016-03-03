@@ -8,7 +8,7 @@ class Derbyshire {
     this._ctx = new AudioCtx();
     this._out = this.ctx.destination;
     this._sources = new SourcesArray();
-    this.mixer = new Mixer(this.sources, this.out);
+    this.mixer = new Mixer(this.ctx, this.sources);
     return this;
   }
 
