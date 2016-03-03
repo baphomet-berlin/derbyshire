@@ -27,4 +27,9 @@ describe('Object construction', () => {
       assert.equal(derbyshire.mixer.constructor.name, 'DerbyshireMixer');
     });
   });
+  describe('Sources array (this.sources)', () => {
+    it('should be new SourcesArray', () => {;
+      assert.equal(derbyshire.sources.constructor.name, 'DerbyshireSourcesArray');
+    });
+  });
 });
