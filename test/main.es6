@@ -1,8 +1,16 @@
-import test from 'tape';
-import Derbyshire from '../build/Derbyshire.js';
+import 'should';
+import 'assert';
 
-test('Object creation', (t) => {
-  t.plan(2);
-  t.pass('u pass lel');
-  t.pass('u pass lel');
+import AudioContext from './webaudio-mock.es6';
+import Derbyshire from '../src/Derbyshire.es6';
+
+var assert = require('assert');
+
+describe('Array', () => {
+  describe('#indexOf()', () => {
+    it('should return -1 when the value is not present', () => {
+      assert.equal(-1, [1,2,3].indexOf(5));
+      assert.equal(-1, [1,2,3].indexOf(0));
+    });
+  });
 });
