@@ -8,7 +8,7 @@ class Derbyshire {
     this._ctx = new AudioCtx();
     this._out = this.ctx.destination;
     this._sources = new SourcesArray();
-    this.mixer = new Mixer(this.out);
+    this.mixer = new Mixer(this.sources, this.out);
     return this;
   }
 
@@ -22,4 +22,5 @@ class Derbyshire {
     return this._out;
   }
 }
+
 export default Derbyshire;

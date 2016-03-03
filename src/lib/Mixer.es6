@@ -1,6 +1,7 @@
 class DerbyshireMixer {
-  constructor(outNode) {
+  constructor(sourcesArray, outNode) {
     this._out = outNode;
+    
   }
 }
 

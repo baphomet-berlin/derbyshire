@@ -1,5 +1,10 @@
-class DerbyshireSourcesArray {
+class DerbyshireSourcesArray extends Array {
   constructor() {
+    super();
+  }
+
+  push(source) {
+    
   }
 }
 
