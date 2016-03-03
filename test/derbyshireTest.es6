@@ -20,6 +20,7 @@ describe('Object construction', () => {
       const name = derbyshire.out.constructor.name;
       assert.equal(name, 'AudioDestinationNode');
     });
+
     it('should share context of this.ctx', () => {
       assert.equal(derbyshire.out.context, derbyshire.ctx);
     });

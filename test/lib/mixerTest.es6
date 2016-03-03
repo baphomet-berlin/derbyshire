@@ -42,6 +42,6 @@ describe('Object construction: MixerChannelTrack', () => {
   const channel = new DerbyshireMixerChannelTrack(ctx, oscillator);
   it('should be a MixerChannelMain Object', () => {
     assert.equal(channel.constructor.name, 'DerbyshireMixerChannelTrack');
-    oscillator.stop()
+    oscillator.stop();
   });
 });
