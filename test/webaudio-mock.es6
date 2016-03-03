@@ -150,6 +150,8 @@ class AudioContext {
   createDelayNode() { return this.createDelay(); }
 }
 
-window.AudioContext = AudioContext;
+if (/PhantomJS/.test(window.navigator.userAgent)) {
+  window.AudioContext = AudioContext;
+}
 
 export default AudioContext;
