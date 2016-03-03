@@ -1,14 +1,20 @@
-class DerbyshireMixerChannel extends GainNode {
-  constructor(ctx, gain = 1) {
-    super();
-    this.gain = gain;
-    this.connect(ctx.destination);
+class DerbyshireMixerChannel {
+  constructor(ctx) {
+    this._gain = ctx.createGain();
+    this._gain.connect(ctx.destination);
   }
 }
 
 class DerbyshireMixerChannelMain extends DerbyshireMixerChannel {
   constructor(ctx) {
     super(ctx);
+  }
+}
+
+class DerbyshireMixerChannelTrack extends DerbyshireMixerChannel {
+  constructor(ctx, node) {
+    super(ctx);
+    node.connect(this._gain);
   }
 }
 
@@ -22,5 +28,10 @@ class DerbyshireMixer {
   }
 }
 
-export { DerbyshireMixer, DerbyshireMixerChannel, DerbyshireMixerChannelMain };
+export { 
+  DerbyshireMixer, 
+  DerbyshireMixerChannel, 
+  DerbyshireMixerChannelMain,
+  DerbyshireMixerChannelTrack
+};
 export default DerbyshireMixer;

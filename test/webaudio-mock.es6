@@ -55,7 +55,13 @@ class MediaStreamAudioSourceNode extends AudioSourceNode {
     }
   }
 }
-class OscillatorNode extends AudioSourceNode {}
+class OscillatorNode extends AudioSourceNode {
+  get frequency() {
+    return { value: 0 };
+  }
+  start() {}
+  stop() {}
+}
 
 class ScriptProcessorNode extends AudioNode {
   constructor(bufferSize) {
@@ -65,13 +71,6 @@ class ScriptProcessorNode extends AudioNode {
   }
 }
 
-class JavaScriptNode extends AudioNode {
-  constructor(bufferSize) {
-    super();
-    this.bufferSize = bufferSize;
-    if (!this.bufferSize) { throw new Error('Not enough arguments'); }
-  }
-}
 class AnalyserNode extends AudioNode {}
 class GainNode extends AudioNode {
   constructor() {
@@ -142,12 +141,6 @@ class AudioContext {
   createDynamicsCompressor() { return new DynamicsCompressorNode(); }
   createWaveTable() { return new WaveTable(); }
 
-  // Deprecated methods
-  createJavaScriptNode(bufferSize) {
-    return new JavaScriptNode(bufferSize);
-  }
-  createGainNode() { return this.createGain(); }
-  createDelayNode() { return this.createDelay(); }
 }
 
 if (/PhantomJS/.test(window.navigator.userAgent)) {
