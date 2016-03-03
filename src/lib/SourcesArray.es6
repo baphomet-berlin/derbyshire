@@ -4,7 +4,7 @@ class DerbyshireSourcesArray extends Array {
   }
 
   push(source) {
-    
+    super(source);
   }
 }
 

@@ -1,7 +1,7 @@
 import Mixer from './lib/Mixer.es6';
-import SourcesArray from './lib/SourcesArray.es6'
+import SourcesArray from './lib/SourcesArray.es6';
 
-const AudioCtx = window.AudioContext || window.webkitAudioContext;
+const AudioCtx = window.AudioContext || window.webkitAudioContext || null;
 
 class Derbyshire {
   constructor() {

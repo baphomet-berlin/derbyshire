@@ -1,8 +1,7 @@
 class AudioNode {
   constructor() {
-    AudioContext = undefined;
     this.numberOfInputs = 1;
-    this.numberOfOutputs = 1;  
+    this.numberOfOutputs = 1;
   }
   connect() {}
   disconnect() {}
@@ -38,17 +37,17 @@ class AudioBufferSourceNode extends AudioSourceNode {
 }
 
 class MediaElementAudioSourceNode extends AudioSourceNode {
-  constructor( mediaElement ) {
+  constructor(mediaElement) {
     super();
     this.mediaElement = mediaElement;
   }
 }
 
 class MediaStreamAudioSourceNode extends AudioSourceNode {
-  constructor( mediaStream ) {
+  constructor(mediaStream) {
     super();
     this.mediaStream = mediaStream;
-    const type = this.mediaStream ? 
+    const type = this.mediaStream ?
       (this.mediaStream.constructor || this.mediaStream.name) :
       null;
     if (type !== 'LocalMediaStream') {
@@ -59,7 +58,7 @@ class MediaStreamAudioSourceNode extends AudioSourceNode {
 class OscillatorNode extends AudioSourceNode {}
 
 class ScriptProcessorNode extends AudioNode {
-  constructor( bufferSize ) {
+  constructor(bufferSize) {
     super();
     this.bufferSize = bufferSize;
     if (!this.bufferSize) { throw new Error('Not enough arguments'); }
@@ -67,7 +66,7 @@ class ScriptProcessorNode extends AudioNode {
 }
 
 class JavaScriptNode extends AudioNode {
-  constructor( bufferSize ) {
+  constructor(bufferSize) {
     super();
     this.bufferSize = bufferSize;
     if (!this.bufferSize) { throw new Error('Not enough arguments'); }
@@ -77,7 +76,8 @@ class AnalyserNode extends AudioNode {}
 class GainNode extends AudioNode {
   constructor() {
     super();
-    this.gain = new (class AudioGain extends AudioParam {})();
+    class AudioGain extends AudioParam {}
+    this.gain = new AudioGain();
   }
 }
 class DelayNode extends AudioNode {}
@@ -90,7 +90,6 @@ class ChannelMergerNode extends AudioNode {}
 class DynamicsCompressorNode extends AudioNode {}
 class WaveTable {}
 
-  
 class AudioListener {
   constructor() {
     this.dopplerFactor = 1;
@@ -118,13 +117,13 @@ class AudioContext {
     this.sampleRate = 44100;
     this.currentTime = 0;
   }
-  createBuffer( channels, length, rate ) {
-    return new AudioBuffer( channels, length, rate );
+  createBuffer(channels, length, rate) {
+    return new AudioBuffer(channels, length, rate);
   }
   decodeAudioData() {}
   createBufferSource() { return new AudioBufferSourceNode(); }
-  createMediaElementSource( mediaElement ) {
-    return new MediaElementAudioSourceNode( mediaElement );
+  createMediaElementSource(mediaElement) {
+    return new MediaElementAudioSourceNode(mediaElement);
   }
   createMediaStreamSource() { return new MediaStreamAudioSourceNode(); }
   createOscillator() { return new OscillatorNode(); }

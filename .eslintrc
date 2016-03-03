@@ -5,6 +5,7 @@
     "browser": true,
     "node": true
   },
+  // To give you an idea how to override rule options:
   "rules": {
     "no-undef": [0]
   }
