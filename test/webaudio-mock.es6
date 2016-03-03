@@ -111,6 +111,7 @@ class AudioBuffer {
 class AudioContext {
   constructor() {
     this.destination = new AudioDestinationNode();
+    this.destination.context = this;
     this.listener = new AudioListener();
 
     this.activeSourceCount = 0;

@@ -10,11 +10,21 @@ describe('Object construction', () => {
     const name = derbyshire.ctx.constructor.name;
     assert.equal(name, 'AudioContext');
   });
-  describe('Output node', () => {
-    const out = derbyshire.out;
-    it('should set out as new AudioDestinationNode', () => {
-      const name = out.constructor.name;
-      assert.equal(name, 'AudioDestinationNode');      
+  describe('Output node (this.out)', () => {
+    it('should be new AudioDestinationNode', () => {
+      const name = derbyshire.out.constructor.name;
+      assert.equal(name, 'AudioDestinationNode');
+    });
+    it('should share context of this.ctx', () => {
+      assert.equal(derbyshire.out.context, derbyshire.ctx);
+    });
+    it('should not be writeable', () => {
+      assert.throws(() => { derbyshire.out = 'nope' });
+    });
+  }); 
+  describe('Mixer (this.mixer)', () => {
+    it('should be new Mixer', () => {;
+      assert.equal(derbyshire.mixer.constructor.name, 'DerbyshireMixer');
     });
   });
 });
